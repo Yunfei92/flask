@@ -1,0 +1,23 @@
+<div id="article_list" aria-multiselectable="true">
+    {% for article in article_list %}
+    {% if article.verify_flag_is_ONLINE() %}<!-- 多重验证 -->
+    <div id="article_title" class="visitor_article_title" ><!-- 此处id不需要唯一 -->
+        <span class="glyphicon glyphicon-file"></span>
+        <a data-toggle="collapse" data-parent=#{{loop.index}} href=#{{loop.index}} aria-expanded="false" aria-controls={{loop.index}}>
+            {{ article.title }}
+        </a>
+        <div class="visitor_article_info">
+            <span class="glyphicon glyphicon-time"></span><b>UTIME:</b>{{ article.get_update_time() }}
+            <span class="glyphicon glyphicon-file"></span><a href="{{ url_for('views_blueprint.get_article_by_id', article_id=article.id) }}" target="_blank">NEW-PAGE</a>
+        </div>
+    </div>
+    <div id={{loop.index}} class="collapse" aria-labelledby={{loop.index}}>
+        <!-- 此处的id必须唯一，并且id在上面需要使用，故使用JinJia2自带函数loop.index，返回当前项在列表中的位置，从1开始 -->
+        <div class="visitor_article_txt">
+            {{ article.txt_html | safe }}
+            <hr>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>

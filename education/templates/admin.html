@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block page_left_head %}
+<span class="glyphicon glyphicon-home"></span>
+<a href="/">WEBSITE</a>
+<span class="glyphicon glyphicon-chevron-right"></span>
+<a href="" class="disable">{{ page_title }}</a>
+{% endblock %}
+
+{% block page_left_body %}
+<div id="page_title">
+    <h1 class="text-uppercase">
+        {{ current_user.get_account() }}
+        <small class="text-lowercase">
+            <em>
+                {{ current_user.get_power() }}, <!-- 此处有逗号 -->
+                {{ current_user.get_phone() }},
+                {{ current_user.get_email() }}
+            </em>
+        </small>
+    </h1>
+</div>
+<hr>
+<div id="article_operate">
+    <h4><span class="glyphicon glyphicon-menu-down"></span>ARTICLE OPERATE</span></h4>
+    <a target="_blank" data-toggle="tooltip" data-placement="right" title="new page" href="/new_article"><span class="glyphicon glyphicon-menu-right"></span>NEW ARTICLE</a>
+    <br>
+    <a target="_blank" data-toggle="tooltip" data-placement="right" title="new page" href="/show_article_list"><span class="glyphicon glyphicon-menu-right"></span>ARTICLE LIST</a>
+</div>
+<br>
+<div id="self_info_operate">
+    <h4><span class="glyphicon glyphicon-menu-down"></span>SELF INFO OPERATE</h4>
+
+    <div id="change_password">
+        <div id="change_password_head">
+            <a type="button" data-toggle="collapse" data-parent="#self_info_operate" href="#change_password_body" aria-expanded="false" aria-controls="change_password_body"><span class="glyphicon glyphicon-menu-right"></span>CHANGE PASSWORD</a>
+        </div>
+        <div id="change_password_body" class="collapse" aria-labelledby="change_password_head">
+            <hr>
+            {% include 'admin_change_password.html' %}
+            <hr>
+        </div>
+    </div>
+
+    <div id="change_phone">
+        <div id="change_phone_head">
+            <a data-toggle="collapse" data-parent="#self_info_operate" href="#change_phone_body" aria-expanded="false" aria-controls="change_phone_body"><span class="glyphicon glyphicon-menu-right"></span>CHANGE PHONE</a>
+        </div>
+        <div id="change_phone_body" class="collapse" aria-labelledby="change_phone_head">
+            <hr>
+            {% include 'admin_change_phone.html' %}
+            <hr>
+        </div>
+    </div>
+
+    <div id="change_email">
+        <div id="change_email_head">
+            <a data-toggle="collapse" data-parent="#self_info_operate" href="#change_email_body" aria-expanded="false" aria-controls="change_email_body"><span class="glyphicon glyphicon-menu-right"></span>CHANGE EMAIL</a>
+        </div>
+        <div id="change_email_body" class="collapse" aria-labelledby="change_email_head">
+            <hr>
+            {% include 'admin_change_email.html' %}
+            <hr>
+        </div>
+    </div>
+
+    <div id="change_info">
+        <div id="change_info_head">
+            <a data-toggle="collapse" data-parent="#self_info_operate" href="#change_info_body" aria-expanded="false" aria-controls="change_info_body"><span class="glyphicon glyphicon-menu-right"></span>CHANGE INFO</a>
+        </div>
+        <div id="change_info_body" class="collapse" aria-labelledby="change_info_head">
+            <hr>
+            {% include 'admin_change_info.html' %}
+            <hr>
+        </div>
+    </div>
+
+    <a href="/logout"><span class="glyphicon glyphicon-menu-right"></span>LOGOUT</a>
+</div>
+<br>
+<h4><span class="glyphicon glyphicon-menu-down"></span>ADMIN OPERATE</h4>
+<div id="admin_operate" aria-multiselectable="true">
+    <div id="add_admin">
+        <div id="add_admin_head">
+            <a data-toggle="collapse" data-parent="#admin_operate" href="#add_admin_body" aria-expanded="false" aria-controls="add_admin_body"><span class="glyphicon glyphicon-menu-right"></span>ADD ADMIN</a>
+        </div>
+        <div id="add_admin_body" class="collapse" aria-labelledby="add_admin_head">
+            <hr>
+            {% include 'admin_add.html' %}
+            <hr>
+        </div>
+    </div>
+    <div id="show_admin_list">
+        <div id="show_admin_list_head">
+            <a class="collapsed" data-toggle="collapse" data-parent="#admin_operate" href="#show_admin_list_body" aria-expanded="false" aria-controls="show_admin_list_body"><span class="glyphicon glyphicon-menu-right"></span>ADMIN LIST</a>
+        </div>
+        <div id="show_admin_list_body" class="collapse" aria-labelledby="show_admin_list_head">
+            <hr>
+            {% include 'admin_show_list.html' %}
+            <hr>
+        </div>
+    </div>
+</div>
+{% endblock %}

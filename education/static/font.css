@@ -1,0 +1,36 @@
+* {
+  font-family: Sans-serif;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+.article_txt {
+  font-size: 20px;
+}
+
+.article_info {
+  font-size: 15px;
+  color: #666;
+}
+
+.visitor_article_title {
+  font-size: 20px;
+  padding: 8px 15px;
+  margin-bottom: 10px;
+  list-style: none;
+  background-color: #DDD;
+  border-radius: 4px;
+}
+
+.visitor_article_info {
+  font-size: 10px;
+  float: right;
+}
+
+.visitor_article_txt {
+  font: 15px;
+}
+
+.notice_board_txt {
+  font-size: 15px;
+}

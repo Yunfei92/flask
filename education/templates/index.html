@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block page_left_head %}
+<span class="glyphicon glyphicon-home"></span>
+<a href="/">WEBSITE</a>
+<span class="glyphicon glyphicon-chevron-right"></span>
+<a href="javascript:void(0)" class="disable">{{ page_title }}</a>
+{% endblock %}
+
+{% block page_left_body %}
+<div class="jumbotron">
+    <h1>{{ index_imax.get_title() }}</h1>
+    <hr>
+    {{ index_imax.txt_html | safe }}
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a href="{{ url_for('views_blueprint.get_article_list_by_tag', article_tag='NOTICE') }}">NOTICE</a>
+            </div>
+            <div class="panel-body">
+                {% for article in article_notice_list %}
+                <span class="glyphicon glyphicon-file"></span>
+                <a href="{{ url_for('views_blueprint.get_article_by_id', article_id=article.id) }}">{{ article.title }}</a>
+                <br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a href="{{ url_for('views_blueprint.get_article_list_by_tag', article_tag='SHOW') }}">SHOW</a>
+            </div>
+            <div class="panel-body">
+                {% for article in article_show_list %}
+                <span class="glyphicon glyphicon-file"></span>
+                <a href="{{ url_for('views_blueprint.get_article_by_id', article_id=article.id) }}">{{ article.title }}</a>
+                <br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a href="{{ url_for('views_blueprint.get_article_list_by_tag', article_tag='EXP') }}">EXP</a>
+            </div>
+            <div class="panel-body">
+                {% for article in article_exp_list %}
+                <span class="glyphicon glyphicon-file"></span>
+                <a href="{{ url_for('views_blueprint.get_article_by_id', article_id=article.id) }}">{{ article.title }}</a>
+                <br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

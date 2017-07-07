@@ -1,0 +1,7 @@
+<a href="{{ url_for('views_blueprint.edit_article', article_id=article.id) }}"><span class="glyphicon glyphicon-pencil"></span>EDIT</a>
+<a href="{{ url_for('views_blueprint.delete_article', article_id=article.id) }}"><span class="glyphicon glyphicon-trash"></span>DELETE</a>
+<span class="glyphicon glyphicon-link"></span>SET:
+<a href="{{ url_for('views_blueprint.set_spea', article_id=article.id, spea_name='index_imax') }}"><span class="glyphicon glyphicon-picture"></span>I-I</a>
+<a href="{{ url_for('views_blueprint.set_spea', article_id=article.id, spea_name='notice_board') }}"><span class="glyphicon glyphicon-blackboard"></span>N-B</a>
+<a href="{{ url_for('views_blueprint.set_spea', article_id=article.id, spea_name='website_info') }}"><span class="glyphicon glyphicon-envelope"></span>W-I</a>
+<a href="{{ url_for('views_blueprint.set_spea', article_id=article.id, spea_name='update_info') }}"><span class="glyphicon glyphicon-envelope"></span>U-I</a>

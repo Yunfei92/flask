@@ -1,0 +1,20 @@
+<form method='POST'>
+{{ change_phone_form.hidden_tag() }} <!-- 此项与CSRF功能有关，不可省略 -->
+<div class="form-group">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <span class="input-group-addon">{{ change_phone_form.get_new_phone_label() }}</span>
+                {{ change_phone_form.new_phone(type="text",class="form-control") }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-lg-3">
+            {{ change_phone_form.submit(class="form-control btn btn-success",value=change_phone_form.get_submit_label()) }}
+        </div>
+    </div>
+</div>
+</form>

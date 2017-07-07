@@ -1,0 +1,27 @@
+{% if current_user.is_HIGH() %}
+<table class="table table-hover table-bordered">
+    <tr>
+        <td>ACCOUNT</td>
+        <td>PHONE</td>
+        <td>EMAIL</td>
+        <td>INFO</td>
+        <td>OPERATE</td>
+    </tr>
+    {% for admin in admin_list %}
+    <tr>
+        <td>
+            <a href="{{ url_for('views_blueprint.get_article_list_by_admin_id', admin_id=admin.id) }}">{{ admin.get_account() }}</a>
+            {% if admin.is_HIGH() %}
+                <span class="label label-danger">{{ admin.get_power() }}</span>
+            {% endif %}
+        </td>
+        <td>{{ admin.get_phone() }}</td>
+        <td>{{ admin.get_email() }}</td>
+        <td>{{ admin.get_info() }}</td>
+        <td></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>POWER IS NOT ENOUGH.</p>
+{% endif %}

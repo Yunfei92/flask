@@ -1,0 +1,20 @@
+<form method='POST'>
+{{ change_email_form.hidden_tag() }} <!-- 此项与CSRF功能有关，不可省略 -->
+<div class="form-group">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <span class="input-group-addon">{{ change_email_form.get_new_email_label() }}</span>
+                {{ change_email_form.new_email(type="text",class="form-control") }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-lg-3">
+            {{ change_email_form.submit(class="form-control btn btn-success",value=change_email_form.get_submit_label()) }}
+        </div>
+    </div>
+</div>
+</form>

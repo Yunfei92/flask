@@ -1,0 +1,84 @@
+{% extends "bootstrap.html" %}
+
+{% block navbar %}
+<nav class="container">
+    <h1><strong>国家大学生文化素质教育基地</strong> <small>中国传媒大学站</small></h1>
+    <form class="form-inline" method="POST">
+        <div class="form-group">
+            <a class="btn btn-primary" href="/article_list/NOTICE">NOTICE</a>
+            <a class="btn btn-primary" href="/article_list/SHOW">SHOW</a>
+            <a class="btn btn-primary" href="/article_list/EXP">EXP</a>
+            <a class="btn btn-primary" href="/article_list/LOG">LOG</a>
+            {% if current_user.is_authenticated %} <!-- 注意这里是属性而不是方法，天坑 -->
+            <div class="btn-group">
+                <a type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="/admin">ADMIN</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/logout">QUIT</a></li>
+                </ul>
+            </div>
+            {% else %}
+            <a class="btn btn-danger" href="/login"></a>
+            {% endif %}
+            {{ search_form.hidden_tag() }}
+            <div class="input-group">
+                {{ search_form.key_word(class="form-control") }}
+                <span class="input-group-btn">{{ search_form.submit(class="btn btn-success",value=search_form.get_submit_label()) }}</span>
+            </div>
+        </div>
+    </form>
+</nav>
+<hr>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div id="page_left" class="col-sm-8">
+            <div class="breadcrumb">
+                {% block page_left_head %}
+                {% endblock %}
+            </div>
+            <hr>
+            {% block page_left_body %}
+            {% endblock %}
+            <hr>
+            {% block page_left_footer %}
+            {% endblock %}
+        </div>
+        <div id="page_right" class="col-sm-4">
+            {% block page_right_head %}
+                <div class="breadcrumb">
+                    <span class="glyphicon glyphicon-pushpin"></span>
+                    <a href="#">NOTICE</a>
+                </div>
+            {% endblock %}
+            <hr>
+            {% block page_right_body %}
+                {% for message in get_flashed_messages() %}
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <a type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                    <strong>NOTICE: </strong>{{ message }}
+                </div>
+                <hr>
+                {% endfor %}
+                <div class="notice_board_txt">
+                    {{ notice_board.txt_html | safe }}
+                </div>
+            {% endblock %}
+            <hr>
+            {% block page_right_footer %}
+            <a class="label label-info" href="/article/website_info">WEBSITE-INFO</a>
+            <a class="label label-info" href="/article/update_info">UPDATE-INFO</a>
+            <a class="label label-info" href="http://git.cucplus.com/fengyong/wenhua_cuc">GITLAB</a>
+            {% endblock %}
+        </div>
+    </div>
+<div>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

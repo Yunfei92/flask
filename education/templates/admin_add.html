@@ -1,0 +1,74 @@
+{% if current_user.is_HIGH() %}
+<form method='POST'>
+{{ add_admin_form.hidden_tag() }} <!-- 此项与CSRF功能有关，不可省略 -->
+<div class="form-group">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <span class="input-group-addon">{{ add_admin_form.get_account_label() }}</span>
+                {{ add_admin_form.account(type="text",class="form-control") }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <span class="input-group-addon">{{ add_admin_form.get_password_label() }}</span>
+                {{ add_admin_form.password(class="form-control") }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <span class="input-group-addon">{{ add_admin_form.get_password_verify_label() }}</span>
+                {{ add_admin_form.password_verify(class="form-control") }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <span class="input-group-addon">{{ add_admin_form.get_phone_label() }}</span>
+                {{ add_admin_form.phone(class="form-control") }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <span class="input-group-addon">{{ add_admin_form.get_email_label() }}</span>
+                {{ add_admin_form.email(class="form-control") }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <span class="input-group-addon">{{ add_admin_form.get_info_label() }}</span>
+                {{ add_admin_form.info(class="form-control") }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-lg-3">
+            {{ add_admin_form.submit(class="form-control btn btn-success",value=add_admin_form.get_submit_label()) }}
+        </div>
+    </div>
+</div>
+</form>
+{% else %}
+<p>POWER IS NOT ENOUGH.</p>
+{% endif %}

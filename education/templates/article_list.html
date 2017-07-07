@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block page_left_head %}
+<span class="glyphicon glyphicon-home"></span>
+<a href="/">WEBSITE</a>
+<span class="glyphicon glyphicon-chevron-right"></span>
+<a href="" class="disable">{{ page_title }}</a>
+{% endblock %}
+
+{% block page_left_body %}
+<div id="page_title">
+    <h1>{{ page_title }} <small>article list</small></h1>
+</div>
+<hr>
+{% if current_user.is_authenticated %}
+    {% include 'article_list_admin.html' %}
+{% else %}
+    {% include 'article_list_visitor.html' %}
+{% endif %}
+{% endblock %}

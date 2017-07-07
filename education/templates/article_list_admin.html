@@ -1,0 +1,28 @@
+<div id="article_list">
+    <table class="table table-hover table-bordered">
+        <tr>
+            <td>TITLE</td>
+            <td>TAG</td>
+            <td>FLAG</td>
+            <td>OPERATE</td>
+        </tr>
+        {% for article in article_list %}
+        <tr>
+            <td>
+                <a href="{{ url_for('views_blueprint.get_article_by_id', article_id=article.id) }}">{{ article.get_title() }}</a>
+                {% for spea_name in article.get_spea_name() %}
+                <span class="label label-info">{{ spea_name }}</span>
+                {% endfor %}
+                {% if article.admin_id == current_user.id %}
+                <span class="label label-info">OWN</span>
+                {% endif %}
+            </td>
+            <td>{{ article.get_tag_name() }}</td>
+            <td>{{ article.get_flag_name() }}</td>
+            <td>
+                {% include 'article_operate.html' %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>

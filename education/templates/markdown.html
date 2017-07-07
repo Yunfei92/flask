@@ -1,0 +1,57 @@
+<div>
+    <form method='POST' class="form">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">{{ form.get_title_label() }}</span>
+                {{ form.title(class="form-control") }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="input-group">
+                    <span class="input-group-addon">{{ form.get_tag_label() }}</span>
+                    {{ form.tag(class="form-control") }}
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="input-group">
+                    <span class="input-group-addon">{{ form.get_flag_label() }}</span>
+                    {{ form.flag(class="form-control") }}
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="input-group">
+                    <span class="input-group-addon">{{ form.get_author_label() }}</span>
+                    {{ form.author(class="form-control") }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">EDIT:</span>
+                        <span class="input-group-addon">{{ form.get_txt_markdown_label() }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-12">
+                {{ form.txt_markdown(rows=30,class="form-control") }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6">
+                {{ form.submit(class="btn btn-sucess", value=form.get_submit_label()) }}
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

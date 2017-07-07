@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block page_left_head %}
+<span class="glyphicon glyphicon-home"></span>
+<a href="/">WEBSITE</a>
+<span class="glyphicon glyphicon-chevron-right"></span>
+<a href="{{ url_for('views_blueprint.get_article_list_by_tag', article_tag=article.tag) }}">{{ article.get_tag_name() }}</a>
+<span class="glyphicon glyphicon-chevron-right"></span>
+<a href="" class="disable">{{ article.title }}</a>
+{% endblock %}
+
+{%block page_left_body%}
+<div id="article_title">
+    <h1>{{ article.get_title() }}</h1>
+</div>
+<div id="article_info" class="article_info">
+    <span class="glyphicon glyphicon-tag"></span><b>TAG:</b>{{ article.get_tag_name() }}
+    <span class="glyphicon glyphicon-time"></span><b>CTIME:</b>{{ article.get_create_time() }}
+    <span class="glyphicon glyphicon-time"></span><b>UTIME:</b>{{ article.get_update_time() }}
+    <span class="glyphicon glyphicon-user"></span><b>AUTHOR:</b>{{ article.author }}
+</div>
+<div id="article_operate">
+    {% if current_user.is_authenticated %}
+        <span class="glyphicon glyphicon-flag"></span><b>FLAG:</b>{{ article.get_flag_name() }}
+        <span class="glyphicon glyphicon-flag"></span><b>ADMIN:</b>{{ article.get_admin_info().account }}
+        {% include 'article_operate.html' %}
+        {% for spea_name in article.get_spea_name() %}
+            <span class="label label-info">{{ spea_name }}</span>
+        {% endfor %}
+    {% endif %}
+</div>
+<hr>
+<div id="article_txt" class="article_txt">
+    {{ article.txt_html | safe }}
+</div>
+{% endblock %}
+
+{% block page_left_footer %}
+<a href="#"><span class="glyphicon glyphicon-save-file"></span>SAVE-TO-PDF</a>
+{% endblock %}
